@@ -4,7 +4,6 @@ class ChainId {
   int value;
 
   ChainId(int value) {
-    assert (value != null);
     this.value = value;
   }
 

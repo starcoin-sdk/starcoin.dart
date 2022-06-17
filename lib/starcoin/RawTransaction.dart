@@ -11,14 +11,6 @@ class RawTransaction {
   ChainId chain_id;
 
   RawTransaction(AccountAddress sender, int sequence_number, TransactionPayload payload, int max_gas_amount, int gas_unit_price, String gas_token_code, int expiration_timestamp_secs, ChainId chain_id) {
-    assert (sender != null);
-    assert (sequence_number != null);
-    assert (payload != null);
-    assert (max_gas_amount != null);
-    assert (gas_unit_price != null);
-    assert (gas_token_code != null);
-    assert (expiration_timestamp_secs != null);
-    assert (chain_id != null);
     this.sender = sender;
     this.sequence_number = sequence_number;
     this.payload = payload;
@@ -48,14 +40,14 @@ class RawTransaction {
 
   static RawTransaction deserialize(BinaryDeserializer deserializer){
     var sender = AccountAddress.deserialize(deserializer);
-    var sequence_number = deserializer.deserialize_u64();
+    var sequenceNumber = deserializer.deserialize_u64();
     var payload = TransactionPayload.deserialize(deserializer);
-    var max_gas_amount = deserializer.deserialize_u64();
-    var gas_unit_price = deserializer.deserialize_u64();
-    var gas_token_code = deserializer.deserialize_str();
-    var expiration_timestamp_secs = deserializer.deserialize_u64();
-    var chain_id = ChainId.deserialize(deserializer);
-    return new RawTransaction(sender,sequence_number,payload,max_gas_amount,gas_unit_price,gas_token_code,expiration_timestamp_secs,chain_id);
+    var maxGasAmount = deserializer.deserialize_u64();
+    var gasUnitPrice = deserializer.deserialize_u64();
+    var gasTokenCode = deserializer.deserialize_str();
+    var expirationTimestampSecs = deserializer.deserialize_u64();
+    var chainId = ChainId.deserialize(deserializer);
+    return new RawTransaction(sender,sequenceNumber,payload,maxGasAmount,gasUnitPrice,gasTokenCode,expirationTimestampSecs,chainId);
   }
 
   static RawTransaction bcsDeserialize(Uint8List input)  {

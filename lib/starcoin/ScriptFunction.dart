@@ -7,10 +7,6 @@ class ScriptFunction {
   List<Uint8List> args;
 
   ScriptFunction(ModuleId module, Identifier function, List<TypeTag> ty_args, List<Uint8List> args) {
-    assert (module != null);
-    assert (function != null);
-    assert (ty_args != null);
-    assert (args != null);
     this.module = module;
     this.function = function;
     this.ty_args = ty_args;
@@ -33,9 +29,9 @@ class ScriptFunction {
   static ScriptFunction deserialize(BinaryDeserializer deserializer){
     var module = ModuleId.deserialize(deserializer);
     var function = Identifier.deserialize(deserializer);
-    var ty_args = TraitHelpers.deserialize_vector_TypeTag(deserializer);
+    var tyArgs = TraitHelpers.deserialize_vector_TypeTag(deserializer);
     var args = TraitHelpers.deserialize_vector_bytes(deserializer);
-    return new ScriptFunction(module,function,ty_args,args);
+    return new ScriptFunction(module,function,tyArgs,args);
   }
 
   static ScriptFunction bcsDeserialize(Uint8List input)  {

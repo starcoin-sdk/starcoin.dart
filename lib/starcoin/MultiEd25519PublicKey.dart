@@ -4,7 +4,6 @@ class MultiEd25519PublicKey {
   Bytes value;
 
   MultiEd25519PublicKey(Bytes value) {
-    assert (value != null);
     this.value = value;
   }
 

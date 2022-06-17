@@ -4,7 +4,6 @@ class EventKey {
   Bytes value;
 
   EventKey(Bytes value) {
-    assert (value != null);
     this.value = value;
   }
 

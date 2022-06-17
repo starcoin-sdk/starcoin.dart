@@ -4,7 +4,6 @@ class Module {
   Bytes code;
 
   Module(Bytes code) {
-    assert (code != null);
     this.code = code;
   }
 

@@ -54,7 +54,6 @@ class TransactionArgumentU8Item extends TransactionArgument {
   int value;
 
   TransactionArgumentU8Item(int value) {
-    assert (value != null);
     this.value = value;
   }
 
@@ -98,7 +97,6 @@ class TransactionArgumentU64Item extends TransactionArgument {
   int value;
 
   TransactionArgumentU64Item(int value) {
-    assert (value != null);
     this.value = value;
   }
 
@@ -142,7 +140,6 @@ class TransactionArgumentU128Item extends TransactionArgument {
   Int128 value;
 
   TransactionArgumentU128Item(Int128 value) {
-    assert (value != null);
     this.value = value;
   }
 
@@ -186,7 +183,6 @@ class TransactionArgumentAddressItem extends TransactionArgument {
   AccountAddress value;
 
   TransactionArgumentAddressItem(AccountAddress value) {
-    assert (value != null);
     this.value = value;
   }
 
@@ -230,7 +226,6 @@ class TransactionArgumentU8VectorItem extends TransactionArgument {
   Bytes value;
 
   TransactionArgumentU8VectorItem(Bytes value) {
-    assert (value != null);
     this.value = value;
   }
 
@@ -274,7 +269,6 @@ class TransactionArgumentBoolItem extends TransactionArgument {
   bool value;
 
   TransactionArgumentBoolItem(bool value) {
-    assert (value != null);
     this.value = value;
   }
 

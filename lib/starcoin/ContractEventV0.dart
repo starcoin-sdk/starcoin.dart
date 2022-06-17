@@ -7,10 +7,6 @@ class ContractEventV0 {
   Bytes event_data;
 
   ContractEventV0(EventKey key, int sequence_number, TypeTag type_tag, Bytes event_data) {
-    assert (key != null);
-    assert (sequence_number != null);
-    assert (type_tag != null);
-    assert (event_data != null);
     this.key = key;
     this.sequence_number = sequence_number;
     this.type_tag = type_tag;
@@ -32,10 +28,10 @@ class ContractEventV0 {
 
   static ContractEventV0 deserialize(BinaryDeserializer deserializer){
     var key = EventKey.deserialize(deserializer);
-    var sequence_number = deserializer.deserialize_u64();
-    var type_tag = TypeTag.deserialize(deserializer);
-    var event_data = deserializer.deserialize_bytes();
-    return new ContractEventV0(key,sequence_number,type_tag,event_data);
+    var sequenceNumber = deserializer.deserialize_u64();
+    var typeTag = TypeTag.deserialize(deserializer);
+    var eventData = deserializer.deserialize_bytes();
+    return new ContractEventV0(key,sequenceNumber,typeTag,eventData);
   }
 
   static ContractEventV0 bcsDeserialize(Uint8List input)  {

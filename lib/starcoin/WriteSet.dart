@@ -4,7 +4,6 @@ class WriteSet {
   WriteSetMut value;
 
   WriteSet(WriteSetMut value) {
-    assert (value != null);
     this.value = value;
   }
 

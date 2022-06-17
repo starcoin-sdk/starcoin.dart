@@ -43,8 +43,7 @@ abstract class WriteOp {
 
 
 class WriteOpDeletionItem extends WriteOp {
-  WriteOpDeletionItem() {
-  }
+  WriteOpDeletionItem();
 
   void serialize(BinarySerializer serializer){
     serializer.serialize_variant_index(0);
@@ -78,7 +77,6 @@ class WriteOpValueItem extends WriteOp {
   Bytes value;
 
   WriteOpValueItem(Bytes value) {
-    assert (value != null);
     this.value = value;
   }
 

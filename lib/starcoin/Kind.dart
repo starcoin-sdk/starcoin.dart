@@ -57,7 +57,7 @@ abstract class Kind {
 }
 
 class KindNewHeadsItem extends Kind {
-  KindNewHeadsItem() {}
+  KindNewHeadsItem();
 
   void serialize(BinarySerializer serializer) {
     serializer.serialize_variant_index(0);
@@ -85,7 +85,7 @@ class KindNewHeadsItem extends Kind {
 }
 
 class KindEventsItem extends Kind {
-  KindEventsItem() {}
+  KindEventsItem();
 
   void serialize(BinarySerializer serializer) {
     serializer.serialize_variant_index(1);
@@ -113,7 +113,7 @@ class KindEventsItem extends Kind {
 }
 
 class KindNewPendingTransactionsItem extends Kind {
-  KindNewPendingTransactionsItem() {}
+  KindNewPendingTransactionsItem();
 
   void serialize(BinarySerializer serializer) {
     serializer.serialize_variant_index(2);
@@ -141,7 +141,7 @@ class KindNewPendingTransactionsItem extends Kind {
 }
 
 class KindNewMintBlockItem extends Kind {
-  KindNewMintBlockItem() {}
+  KindNewMintBlockItem();
 
   void serialize(BinarySerializer serializer) {
     serializer.serialize_variant_index(3);

@@ -5,8 +5,6 @@ class EventHandle {
   EventKey key;
 
   EventHandle(int count, EventKey key) {
-    assert (count != null);
-    assert (key != null);
     this.count = count;
     this.key = key;
   }

@@ -14,7 +14,7 @@ Uint8List lcsHash(Uint8List rawData, String seedPrefix) {
 }
 
 Uint8List cryptHash(Uint8List rawBytes, String seedPrefix) {
-  List<int> rawData = List<int>();
+  List<int> rawData = <int>[];
   var k = SHA3(256, SHA3_PADDING, 256);
   k.update(Uint8List.fromList(seedPrefix.codeUnits));
   var salt = k.digest();

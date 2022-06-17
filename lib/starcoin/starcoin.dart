@@ -1,6 +1,5 @@
 library starcoin_types;
 
-import 'dart:ffi';
 import 'dart:typed_data';
 import 'package:optional/optional.dart';
 import 'package:tuple/tuple.dart';

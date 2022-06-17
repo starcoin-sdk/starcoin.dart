@@ -44,7 +44,6 @@ class TravelRuleMetadataTravelRuleMetadataVersion0Item extends TravelRuleMetadat
   TravelRuleMetadataV0 value;
 
   TravelRuleMetadataTravelRuleMetadataVersion0Item(TravelRuleMetadataV0 value) {
-    assert (value != null);
     this.value = value;
   }
 

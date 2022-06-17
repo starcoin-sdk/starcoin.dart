@@ -29,12 +29,12 @@ class ReceiptIdentifier {
   }
 
   String encode(){
-    var data = List<int>();
+    var data = <int>[];
     var addressBytes=this.accountAddress.bcsSerialize();
     data.addAll(addressBytes);
     data.addAll(authKey);
     var converted = _convertBits(data, 8, 5, true);
-    var fullData = List<int>();
+    var fullData = <int>[];
     fullData.add(1);
     fullData.addAll(converted);
     var bech32Data = Bech32(prefix, fullData);
@@ -98,14 +98,14 @@ class KeyPair {
   }
 
   String getAddress() {
-    var address_bytes = Uint8List.fromList(getAddressBytes());
-    return Helpers.byteToHex(address_bytes);
+    var addressBytes = Uint8List.fromList(getAddressBytes());
+    return Helpers.byteToHex(addressBytes);
   }
 
   static String getAddressFromPublicKey(String hexedPk){
     final bytespk=Helpers.hexToBytes(hexedPk);
 
-    List<int> key = new List();
+    List<int> key = [];
     key.addAll(bytespk);
     key.add(0);
 
@@ -113,13 +113,13 @@ class KeyPair {
     k.update(key);
     var hash = k.digest();
 
-    var address_bytes = Uint8List.fromList(hash.sublist(16, 32));
-    return Helpers.byteToHex(address_bytes);
+    var addressBytes = Uint8List.fromList(hash.sublist(16, 32));
+    return Helpers.byteToHex(addressBytes);
   }
 
   List<int> getAddressBytes() {
     //Uint8List publicKey = ed25519_dart.publicKey(_privateKey);
-    List<int> key = new List();
+    List<int> key = [];
     key.addAll(_publicKey);
     key.add(0);
 
@@ -135,7 +135,7 @@ class KeyPair {
   }
 
   Uint8List getPublicAuthKey() {
-    List<int> key = new List();
+    List<int> key = [];
     key.addAll(_publicKey);
     key.add(0);
 
@@ -194,7 +194,7 @@ class KeyPair {
 }
 
 Uint8List getAuthKey(Uint8List publicKey) {
-  List<int> key = new List();
+  List<int> key = [];
   key.addAll(publicKey);
   key.add(0);
 

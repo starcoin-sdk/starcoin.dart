@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 
 import 'package:starcoin_wallet/bcs/bcs.dart';
 
@@ -9,34 +8,28 @@ import 'starcoin/starcoin.dart';
 
 class TransactionBuilder {
 
-    /**
-     * Build a Diem {@link com.diem.types.Script} from a structured value {@link ScriptCall}.
-     *
-     * @param call {@link ScriptCall} value to encode.
-     * @return Encoded script.
-     */
+    /// Build a Diem {@link com.diem.types.Script} from a structured value {@link ScriptCall}.
+    ///
+    /// @param call {@link ScriptCall} value to encode.
+    /// @return Encoded script.
     static Script encode_script(ScriptCall call) {
         ScriptEncodingHelper helper = TRANSACTION_SCRIPT_ENCODER_MAP[call.runtimeType.toString()];
         return helper(call);
     }
 
-    /**
-     * Build a Diem {@link com.diem.types.TransactionPayload} from a structured value {@link ScriptFunctionCall}.
-     *
-     * @param call {@link ScriptFunctionCall} value to encode.
-     * @return Encoded TransactionPayload.
-     */
+    /// Build a Diem {@link com.diem.types.TransactionPayload} from a structured value {@link ScriptFunctionCall}.
+    ///
+    /// @param call {@link ScriptFunctionCall} value to encode.
+    /// @return Encoded TransactionPayload.
     static TransactionPayload encode_script_function(ScriptFunctionCall call) {
         ScriptFunctionEncodingHelper helper = SCRIPT_FUNCTION_ENCODER_MAP[call.runtimeType.toString()];
         return helper(call);
     }
 
-    /**
-     * Try to recognize a Diem {@link com.diem.types.Script} and convert it into a structured value {@code ScriptCall}.
-     *
-     * @param script {@link com.diem.types.Script} values to decode.
-     * @return Decoded {@link ScriptCall} value.
-     */
+    /// Try to recognize a Diem {@link com.diem.types.Script} and convert it into a structured value {@code ScriptCall}.
+    ///
+    /// @param script {@link com.diem.types.Script} values to decode.
+    /// @return Decoded {@link ScriptCall} value.
     static ScriptCall decode_script(Script script)  {
         TransactionScriptDecodingHelper helper = TRANSACTION_SCRIPT_DECODER_MAP[script.code];
         if (helper == null) {
@@ -54,19 +47,19 @@ class TransactionBuilder {
      * @param amount { Int128} value
      * @return Encoded {@link com.diem.types.TransactionPayload} value.
      */
-    static TransactionPayload encode_peer_to_peer_script_function(TypeTag token_type, AccountAddress payee, Bytes payee_auth_key, Int128 amount) {
-        var ty_args = [token_type];
+    static TransactionPayload encode_peer_to_peer_script_function(TypeTag tokenType, AccountAddress payee, Bytes payeeAuthKey, Int128 amount) {
+        var tyArgs = [tokenType];
         BcsSerializer serializer = BcsSerializer();
         serializer.serialize_u128(amount);
-        var amount_bytes = serializer.get_bytes();
-        BcsSerializer key_serializer = BcsSerializer();
-        key_serializer.serialize_uint8list(payee_auth_key.content);
-        var key_bytes=key_serializer.get_bytes();
-        var args = [payee.bcsSerialize(),key_bytes,amount_bytes];
+        var amountBytes = serializer.get_bytes();
+        BcsSerializer keySerializer = BcsSerializer();
+        keySerializer.serialize_uint8list(payeeAuthKey.content);
+        var keyBytes=keySerializer.get_bytes();
+        var args = [payee.bcsSerialize(),keyBytes,amountBytes];
         var function = new Identifier("peer_to_peer");
         var module = new ModuleId(AccountAddress([ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 ]), new Identifier("TransferScripts"));
 
-        return TransactionPayloadScriptFunctionItem(ScriptFunction(module,function,ty_args,args));
+        return TransactionPayloadScriptFunctionItem(ScriptFunction(module,function,tyArgs,args));
     }
 
 
@@ -111,7 +104,7 @@ class TransactionBuilder {
         if (!(arg is TransactionArgumentBoolItem)) {
             throw new Exception("Was expecting a Bool argument");
         }
-        return (arg as TransactionArgumentBoolItem).value;
+        return (arg).value;
     }
 
 
@@ -119,7 +112,7 @@ class TransactionBuilder {
         if (!(arg is TransactionArgumentU8Item)) {
             throw new Exception("Was expecting a U8 argument");
         }
-        return (arg as TransactionArgumentU8Item).value;
+        return (arg).value;
     }
 
 
@@ -127,7 +120,7 @@ class TransactionBuilder {
         if (!(arg is TransactionArgumentU64Item)) {
             throw new Exception("Was expecting a U64 argument");
         }
-        return (arg as TransactionArgumentU64Item).value;
+        return (arg).value;
     }
 
 
@@ -135,7 +128,7 @@ class TransactionBuilder {
         if (!(arg is TransactionArgumentU128Item)) {
             throw new Exception("Was expecting a U128 argument");
         }
-        return (arg as TransactionArgumentU128Item).value;
+        return (arg).value;
     }
 
 
@@ -143,7 +136,7 @@ class TransactionBuilder {
         if (!(arg is TransactionArgumentAddressItem)) {
             throw new Exception("Was expecting a Address argument");
         }
-        return (arg as TransactionArgumentAddressItem).value;
+        return (arg).value;
     }
 
 
@@ -151,7 +144,7 @@ class TransactionBuilder {
         if (!(arg is TransactionArgumentU8VectorItem)) {
             throw new Exception("Was expecting a U8Vector argument");
         }
-        return (arg as TransactionArgumentU8VectorItem).value;
+        return (arg).value;
     }
 
 

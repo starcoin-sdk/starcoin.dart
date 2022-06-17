@@ -3,7 +3,7 @@
 part of serde;
 
 class Unit {
-  Unit() {}
+  Unit();
 
   @override
   bool operator ==(covariant Unit other) {

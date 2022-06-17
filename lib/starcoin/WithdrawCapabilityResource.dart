@@ -4,7 +4,6 @@ class WithdrawCapabilityResource {
   AccountAddress account_address;
 
   WithdrawCapabilityResource(AccountAddress account_address) {
-    assert (account_address != null);
     this.account_address = account_address;
   }
 
@@ -19,8 +18,8 @@ class WithdrawCapabilityResource {
   }
 
   static WithdrawCapabilityResource deserialize(BinaryDeserializer deserializer){
-    var account_address = AccountAddress.deserialize(deserializer);
-    return new WithdrawCapabilityResource(account_address);
+    var accountAddress = AccountAddress.deserialize(deserializer);
+    return new WithdrawCapabilityResource(accountAddress);
   }
 
   static WithdrawCapabilityResource bcsDeserialize(Uint8List input)  {

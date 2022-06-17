@@ -4,7 +4,7 @@ abstract class BinarySerializer {
   List<int> output;
 
   BinarySerializer() {
-    output = new List<int>();
+    output = <int>[];
   }
 
   Uint8List get_bytes() {

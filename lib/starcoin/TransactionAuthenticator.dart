@@ -47,8 +47,6 @@ class TransactionAuthenticatorEd25519Item extends TransactionAuthenticator {
   Ed25519Signature signature;
 
   TransactionAuthenticatorEd25519Item(Ed25519PublicKey public_key, Ed25519Signature signature) {
-    assert (public_key != null);
-    assert (signature != null);
     this.public_key = public_key;
     this.signature = signature;
   }
@@ -60,9 +58,9 @@ class TransactionAuthenticatorEd25519Item extends TransactionAuthenticator {
   }
 
   static TransactionAuthenticatorEd25519Item load(BinaryDeserializer deserializer){
-    var public_key = Ed25519PublicKey.deserialize(deserializer);
+    var publicKey = Ed25519PublicKey.deserialize(deserializer);
     var signature = Ed25519Signature.deserialize(deserializer);
-    return new TransactionAuthenticatorEd25519Item(public_key,signature);
+    return new TransactionAuthenticatorEd25519Item(publicKey,signature);
   }
 
   @override
@@ -100,8 +98,6 @@ class TransactionAuthenticatorMultiEd25519Item extends TransactionAuthenticator 
   MultiEd25519Signature signature;
 
   TransactionAuthenticatorMultiEd25519Item(MultiEd25519PublicKey public_key, MultiEd25519Signature signature) {
-    assert (public_key != null);
-    assert (signature != null);
     this.public_key = public_key;
     this.signature = signature;
   }
@@ -113,9 +109,9 @@ class TransactionAuthenticatorMultiEd25519Item extends TransactionAuthenticator 
   }
 
   static TransactionAuthenticatorMultiEd25519Item load(BinaryDeserializer deserializer){
-    var public_key = MultiEd25519PublicKey.deserialize(deserializer);
+    var publicKey = MultiEd25519PublicKey.deserialize(deserializer);
     var signature = MultiEd25519Signature.deserialize(deserializer);
-    return new TransactionAuthenticatorMultiEd25519Item(public_key,signature);
+    return new TransactionAuthenticatorMultiEd25519Item(publicKey,signature);
   }
 
   @override

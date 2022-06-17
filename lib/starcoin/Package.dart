@@ -6,9 +6,6 @@ class Package {
   Script init_script;
 
   Package(AccountAddress package_address, List<Module> modules, Script init_script) {
-    assert (package_address != null);
-    assert (modules != null);
-    assert (init_script != null);
     this.package_address = package_address;
     this.modules = modules;
     this.init_script = init_script;
@@ -27,10 +24,10 @@ class Package {
   }
 
   static Package deserialize(BinaryDeserializer deserializer){
-    var package_address = AccountAddress.deserialize(deserializer);
+    var packageAddress = AccountAddress.deserialize(deserializer);
     var modules = TraitHelpers.deserialize_vector_Module(deserializer);
-    var init_script = Script.deserialize(deserializer);
-    return new Package(package_address,modules,init_script);
+    var initScript = Script.deserialize(deserializer);
+    return new Package(packageAddress,modules,initScript);
   }
 
   static Package bcsDeserialize(Uint8List input)  {

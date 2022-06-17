@@ -4,7 +4,6 @@ class WriteSetMut {
   List<Tuple2<AccessPath, WriteOp>> write_set;
 
   WriteSetMut(List<Tuple2<AccessPath, WriteOp>> write_set) {
-    assert (write_set != null);
     this.write_set = write_set;
   }
 
@@ -19,8 +18,8 @@ class WriteSetMut {
   }
 
   static WriteSetMut deserialize(BinaryDeserializer deserializer){
-    var write_set = TraitHelpers.deserialize_vector_tuple2_AccessPath_WriteOp(deserializer);
-    return new WriteSetMut(write_set);
+    var writeSet = TraitHelpers.deserialize_vector_tuple2_AccessPath_WriteOp(deserializer);
+    return new WriteSetMut(writeSet);
   }
 
   static WriteSetMut bcsDeserialize(Uint8List input)  {

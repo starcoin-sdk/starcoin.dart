@@ -44,7 +44,6 @@ class GeneralMetadataGeneralMetadataVersion0Item extends GeneralMetadata {
   GeneralMetadataV0 value;
 
   GeneralMetadataGeneralMetadataVersion0Item(GeneralMetadataV0 value) {
-    assert (value != null);
     this.value = value;
   }
 

@@ -4,7 +4,6 @@ class Identifier {
   String value;
 
   Identifier(String value) {
-    assert (value != null);
     this.value = value;
   }
 

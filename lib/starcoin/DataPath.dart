@@ -46,7 +46,6 @@ class DataPathCodeItem extends DataPath {
   Identifier value;
 
   DataPathCodeItem(Identifier value) {
-    assert (value != null);
     this.value = value;
   }
 
@@ -90,7 +89,6 @@ class DataPathResourceItem extends DataPath {
   StructTag value;
 
   DataPathResourceItem(StructTag value) {
-    assert (value != null);
     this.value = value;
   }
 

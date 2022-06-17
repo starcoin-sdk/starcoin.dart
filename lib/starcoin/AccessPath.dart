@@ -5,8 +5,6 @@ class AccessPath {
   DataPath path;
 
   AccessPath(AccountAddress address, DataPath path) {
-    assert (address != null);
-    assert (path != null);
     this.address = address;
     this.path = path;
   }

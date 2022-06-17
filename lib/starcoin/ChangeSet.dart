@@ -5,8 +5,6 @@ class ChangeSet {
   List<ContractEvent> events;
 
   ChangeSet(WriteSet write_set, List<ContractEvent> events) {
-    assert (write_set != null);
-    assert (events != null);
     this.write_set = write_set;
     this.events = events;
   }
@@ -23,9 +21,9 @@ class ChangeSet {
   }
 
   static ChangeSet deserialize(BinaryDeserializer deserializer){
-    var write_set = WriteSet.deserialize(deserializer);
+    var writeSet = WriteSet.deserialize(deserializer);
     var events = TraitHelpers.deserialize_vector_ContractEvent(deserializer);
-    return new ChangeSet(write_set,events);
+    return new ChangeSet(writeSet,events);
   }
 
   static ChangeSet bcsDeserialize(Uint8List input)  {

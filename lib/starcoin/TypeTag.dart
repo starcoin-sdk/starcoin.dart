@@ -55,8 +55,7 @@ abstract class TypeTag {
 
 
 class TypeTagBoolItem extends TypeTag {
-  TypeTagBoolItem() {
-  }
+  TypeTagBoolItem();
 
   void serialize(BinarySerializer serializer){
     serializer.serialize_variant_index(0);
@@ -87,8 +86,7 @@ class TypeTagBoolItem extends TypeTag {
 }
 
 class TypeTagU8Item extends TypeTag {
-  TypeTagU8Item() {
-  }
+  TypeTagU8Item();
 
   void serialize(BinarySerializer serializer){
     serializer.serialize_variant_index(1);
@@ -119,8 +117,7 @@ class TypeTagU8Item extends TypeTag {
 }
 
 class TypeTagU64Item extends TypeTag {
-  TypeTagU64Item() {
-  }
+  TypeTagU64Item();
 
   void serialize(BinarySerializer serializer){
     serializer.serialize_variant_index(2);
@@ -151,8 +148,7 @@ class TypeTagU64Item extends TypeTag {
 }
 
 class TypeTagU128Item extends TypeTag {
-  TypeTagU128Item() {
-  }
+  TypeTagU128Item();
 
   void serialize(BinarySerializer serializer){
     serializer.serialize_variant_index(3);
@@ -183,8 +179,7 @@ class TypeTagU128Item extends TypeTag {
 }
 
 class TypeTagAddressItem extends TypeTag {
-  TypeTagAddressItem() {
-  }
+  TypeTagAddressItem();
 
   void serialize(BinarySerializer serializer){
     serializer.serialize_variant_index(4);
@@ -215,8 +210,7 @@ class TypeTagAddressItem extends TypeTag {
 }
 
 class TypeTagSignerItem extends TypeTag {
-  TypeTagSignerItem() {
-  }
+  TypeTagSignerItem();
 
   void serialize(BinarySerializer serializer){
     serializer.serialize_variant_index(5);
@@ -250,7 +244,6 @@ class TypeTagVectorItem extends TypeTag {
   TypeTag value;
 
   TypeTagVectorItem(TypeTag value) {
-    assert (value != null);
     this.value = value;
   }
 
@@ -294,7 +287,6 @@ class TypeTagStructItem extends TypeTag {
   StructTag value;
 
   TypeTagStructItem(StructTag value) {
-    assert (value != null);
     this.value = value;
   }
 

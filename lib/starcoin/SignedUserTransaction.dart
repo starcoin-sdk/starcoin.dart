@@ -5,8 +5,6 @@ class SignedUserTransaction {
   TransactionAuthenticator authenticator;
 
   SignedUserTransaction(RawTransaction raw_txn, TransactionAuthenticator authenticator) {
-    assert (raw_txn != null);
-    assert (authenticator != null);
     this.raw_txn = raw_txn;
     this.authenticator = authenticator;
   }
@@ -23,9 +21,9 @@ class SignedUserTransaction {
   }
 
   static SignedUserTransaction deserialize(BinaryDeserializer deserializer){
-    var raw_txn = RawTransaction.deserialize(deserializer);
+    var rawTxn = RawTransaction.deserialize(deserializer);
     var authenticator = TransactionAuthenticator.deserialize(deserializer);
-    return new SignedUserTransaction(raw_txn,authenticator);
+    return new SignedUserTransaction(rawTxn,authenticator);
   }
 
   static SignedUserTransaction bcsDeserialize(Uint8List input)  {

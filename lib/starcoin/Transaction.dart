@@ -46,7 +46,6 @@ class TransactionUserTransactionItem extends Transaction {
   SignedUserTransaction value;
 
   TransactionUserTransactionItem(SignedUserTransaction value) {
-    assert (value != null);
     this.value = value;
   }
 
@@ -90,7 +89,6 @@ class TransactionBlockMetadataItem extends Transaction {
   BlockMetadata value;
 
   TransactionBlockMetadataItem(BlockMetadata value) {
-    assert (value != null);
     this.value = value;
   }
 

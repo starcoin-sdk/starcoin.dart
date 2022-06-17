@@ -4,7 +4,6 @@ class HashValue {
   Bytes value;
 
   HashValue(Bytes value) {
-    assert (value != null);
     this.value = value;
   }
 

@@ -46,7 +46,6 @@ class WriteSetPayloadDirectItem extends WriteSetPayload {
   ChangeSet value;
 
   WriteSetPayloadDirectItem(ChangeSet value) {
-    assert (value != null);
     this.value = value;
   }
 
@@ -91,8 +90,6 @@ class WriteSetPayloadScriptItem extends WriteSetPayload {
   Script script;
 
   WriteSetPayloadScriptItem(AccountAddress execute_as, Script script) {
-    assert (execute_as != null);
-    assert (script != null);
     this.execute_as = execute_as;
     this.script = script;
   }
@@ -104,9 +101,9 @@ class WriteSetPayloadScriptItem extends WriteSetPayload {
   }
 
   static WriteSetPayloadScriptItem load(BinaryDeserializer deserializer){
-    var execute_as = AccountAddress.deserialize(deserializer);
+    var executeAs = AccountAddress.deserialize(deserializer);
     var script = Script.deserialize(deserializer);
-    return new WriteSetPayloadScriptItem(execute_as,script);
+    return new WriteSetPayloadScriptItem(executeAs,script);
   }
 
   @override

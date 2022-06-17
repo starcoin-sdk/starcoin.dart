@@ -10,13 +10,6 @@ class AccountResource {
   int sequence_number;
 
   AccountResource(Bytes authentication_key, Optional<WithdrawCapabilityResource> withdrawal_capability, Optional<KeyRotationCapabilityResource> key_rotation_capability, EventHandle received_events, EventHandle sent_events, EventHandle accept_token_events, int sequence_number) {
-    assert (authentication_key != null);
-    assert (withdrawal_capability != null);
-    assert (key_rotation_capability != null);
-    assert (received_events != null);
-    assert (sent_events != null);
-    assert (accept_token_events != null);
-    assert (sequence_number != null);
     this.authentication_key = authentication_key;
     this.withdrawal_capability = withdrawal_capability;
     this.key_rotation_capability = key_rotation_capability;
@@ -43,14 +36,14 @@ class AccountResource {
   }
 
   static AccountResource deserialize(BinaryDeserializer deserializer){
-    var authentication_key = deserializer.deserialize_bytes();
-    var withdrawal_capability = TraitHelpers.deserialize_option_WithdrawCapabilityResource(deserializer);
-    var key_rotation_capability = TraitHelpers.deserialize_option_KeyRotationCapabilityResource(deserializer);
-    var received_events = EventHandle.deserialize(deserializer);
-    var sent_events = EventHandle.deserialize(deserializer);
-    var accept_token_events = EventHandle.deserialize(deserializer);
-    var sequence_number = deserializer.deserialize_u64();
-    return new AccountResource(authentication_key,withdrawal_capability,key_rotation_capability,received_events,sent_events,accept_token_events,sequence_number);
+    var authenticationKey = deserializer.deserialize_bytes();
+    var withdrawalCapability = TraitHelpers.deserialize_option_WithdrawCapabilityResource(deserializer);
+    var keyRotationCapability = TraitHelpers.deserialize_option_KeyRotationCapabilityResource(deserializer);
+    var receivedEvents = EventHandle.deserialize(deserializer);
+    var sentEvents = EventHandle.deserialize(deserializer);
+    var acceptTokenEvents = EventHandle.deserialize(deserializer);
+    var sequenceNumber = deserializer.deserialize_u64();
+    return new AccountResource(authenticationKey,withdrawalCapability,keyRotationCapability,receivedEvents,sentEvents,acceptTokenEvents,sequenceNumber);
   }
 
   static AccountResource bcsDeserialize(Uint8List input)  {

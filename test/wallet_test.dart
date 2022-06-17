@@ -1,6 +1,5 @@
 import 'dart:collection';
 
-import 'package:bech32/bech32.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hex/hex.dart';
 import 'package:optional/optional.dart';
@@ -18,7 +17,6 @@ import 'package:starcoin_wallet/transaction_builder.dart';
 import 'dart:typed_data';
 import 'package:json_rpc_2/json_rpc_2.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
-import 'package:pedantic/pedantic.dart';
 import 'package:starcoin_wallet/wallet/hash.dart';
 import 'dart:async';
 import 'package:starcoin_wallet/wallet/pubsub.dart';
@@ -29,7 +27,7 @@ const address1 =
     '6b68105b99cc381e9b4c8a9067fff4e204e1ce0384e2c0ce095321ed8a50e57b';
 const address2 =
     'e7f884d74d8372becba990f374bb92a3edd19be9d8d1e50cac38c79d6f57d1c0';
-const URL = "http://127.0.0.1:9850";
+const URL = "https://proxima-seed.starcoin.org";
 
 HostMananger localHostManager(){
   var hosts = HashSet<String>();
@@ -47,11 +45,11 @@ void main() {
       print(account.keyPair.getAddress());
       print(account.keyPair.getReceiptIdentifier().encode());
 
-      var auth_key_hex = "93dcc435cfca2dcf3bf44e9948f1f6a98e66a1f1b114a4b8a37ea16e12beeb6d";
-      var address_hex = "1603d10ce8649663e4e5a757a8681833";
+      var authKeyHex = "93dcc435cfca2dcf3bf44e9948f1f6a98e66a1f1b114a4b8a37ea16e12beeb6d";
+      var addressHex = "1603d10ce8649663e4e5a757a8681833";
 
-      var address = AccountAddress.fromHex(address_hex);
-      var authKey = HEX.decode(auth_key_hex);
+      var address = AccountAddress.fromHex(addressHex);
+      var authKey = HEX.decode(authKeyHex);
 
       var receipt= ReceiptIdentifier.decode("stc1pzcpazr8gvjtx8e895at6s6qcxwfae3p4el9zmnem738fjj83765cue4p7xc3ff9c5dl2zmsjhm4k63mmwta");
       print("address is ${receipt.accountAddress}");
@@ -73,8 +71,8 @@ void main() {
     Wallet wallet = new Wallet(mnemonic: mnemonic, salt: 'LIBRA');
     Account account = wallet.newAccount();
     print(Helpers.byteToHex(account.keyPair.getPrivateKey()));
-    var public_key_hex = Helpers.byteToHex(account.keyPair.getPublicKey());
-    print("public key is $public_key_hex");
+    var publicKeyHex = Helpers.byteToHex(account.keyPair.getPublicKey());
+    print("public key is $publicKeyHex");
     print("account address is ${account.getAddress()}");
     expect("0xaa2c4fb6710a8b8fc78bc14db9610a0b", account.getAddress());
 
@@ -92,7 +90,7 @@ void main() {
 
     unawaited(client.listen());
 
-    var node_info = await client.sendRequest('node.info');
+    var nodeInfo = await client.sendRequest('node.info');
 
     //var txpool_state = await client.sendRequest('txpool.state');
     //print('txpool state is $txpool_state');
@@ -101,29 +99,29 @@ void main() {
     Account account = wallet.newAccount();
     AccountAddress sender = AccountAddress(account.keyPair.getAddressBytes());
 
-    var struct_tag = StructTag(
+    var structTag = StructTag(
         AccountAddress(Helpers.hexToBytes("00000000000000000000000000000001")),
         Identifier("Account"),
         Identifier("Account"),
-        List());
-    List<int> path = List();
+        []);
+    List<int> path = [];
     path.add(RESOURCE_TAG);
 
-    var hash = lcsHash(struct_tag.bcsSerialize(), "STARCOIN::StructTag");
+    var hash = lcsHash(structTag.bcsSerialize(), "STARCOIN::StructTag");
     path.addAll(hash);
 
     final walletClient = new WalletClient(localHostManager());
     var result = await walletClient.getStateJson(
-        sender, DataPathResourceItem(struct_tag));
+        sender, DataPathResourceItem(structTag));
 
-    var list_int = List<int>();
+    var listInt = <int>[];
     for (var i in result) {
-      list_int.add(i);
+      listInt.add(i);
     }
-    var resource = AccountResource.bcsDeserialize(Uint8List.fromList(list_int));
+    var resource = AccountResource.bcsDeserialize(Uint8List.fromList(listInt));
     print("resouce is " + resource.sequence_number.toString());
 
-    struct_tag = StructTag(
+    structTag = StructTag(
         AccountAddress(Helpers.hexToBytes("00000000000000000000000000000001")),
         Identifier("Account"),
         Identifier("Balance"),
@@ -133,71 +131,71 @@ void main() {
                   Helpers.hexToBytes("00000000000000000000000000000001")),
               Identifier("STC"),
               Identifier("STC"),
-              List()))
+              []))
         ]));
-    path = List();
+    path = [];
     path.add(RESOURCE_TAG);
 
-    hash = lcsHash(struct_tag.bcsSerialize(), "STARCOIN::StructTag");
+    hash = lcsHash(structTag.bcsSerialize(), "STARCOIN::StructTag");
     path.addAll(hash);
 
     //var hex_access_path = Helpers.byteToHex(Uint8List.fromList(path));
     //print("hash is " + hex_access_path);
     //var accessPath = AccessPath(sender, DataPathResourceItem(struct_tag));
     result = await walletClient.getStateJson(
-        sender, DataPathResourceItem(struct_tag));
-    list_int = List<int>();
+        sender, DataPathResourceItem(structTag));
+    listInt = <int>[];
     for (var i in result) {
-      list_int.add(i);
+      listInt.add(i);
     }
     var balanceResource =
-        BalanceResource.bcsDeserialize(Uint8List.fromList(list_int));
+        BalanceResource.bcsDeserialize(Uint8List.fromList(listInt));
     print("balance is " + balanceResource.token.low.toString());
 
     //var empty_script = TransactionBuilder.en();
-    struct_tag = StructTag(
+    structTag = StructTag(
         AccountAddress(Helpers.hexToBytes("00000000000000000000000000000001")),
         Identifier("STC"),
         Identifier("STC"),
-        List());
-    var transfer_script = TransactionBuilder.encode_peer_to_peer_script_function(
-        TypeTagStructItem(struct_tag),
+        []);
+    var transferScript = TransactionBuilder.encode_peer_to_peer_script_function(
+        TypeTagStructItem(structTag),
         AccountAddress(
             (Helpers.hexToBytes("703038dffdf4db03ad11fc75cfdec595"))),
         Bytes(Helpers.hexToBytes("826cf2fd51e9fa87378d385c347599f609457b466bcb97d81e22608247440c8f")),
         Int128(0, 200));
-    var payload_bytes = transfer_script.bcsSerialize();
-    print("payload is "+Helpers.byteToHex(payload_bytes));  
+    var payloadBytes = transferScript.bcsSerialize();
+    print("payload is "+Helpers.byteToHex(payloadBytes));  
 
 
-    RawTransaction raw_txn = RawTransaction(
+    RawTransaction rawTxn = RawTransaction(
         sender,
         resource.sequence_number,
-        transfer_script,
+        transferScript,
         20000,
         1,
         "0x1::STC::STC",
-        node_info['now_seconds'] + 40000,
+        nodeInfo['now_seconds'] + 40000,
         ChainId(254));
 
-    var raw_txn_bytes = raw_txn.bcsSerialize();
-    print("txn is "+Helpers.byteToHex(raw_txn_bytes));  
-    print("txn hash is " + Helpers.byteToHex(rawHash(raw_txn_bytes)));
+    var rawTxnBytes = rawTxn.bcsSerialize();
+    print("txn is "+Helpers.byteToHex(rawTxnBytes));  
+    print("txn hash is " + Helpers.byteToHex(rawHash(rawTxnBytes)));
 
-    var sign_bytes = account.keyPair
-        .sign(cryptHash(raw_txn_bytes, "STARCOIN::RawUserTransaction"));
+    var signBytes = account.keyPair
+        .sign(cryptHash(rawTxnBytes, "STARCOIN::RawUserTransaction"));
 
-    Ed25519PublicKey pub_key =
+    Ed25519PublicKey pubKey =
         Ed25519PublicKey(Bytes(account.keyPair.getPublicKey()));
-    Ed25519Signature sign = Ed25519Signature(Bytes(sign_bytes));
+    Ed25519Signature sign = Ed25519Signature(Bytes(signBytes));
 
     TransactionAuthenticatorEd25519Item author =
-        TransactionAuthenticatorEd25519Item(pub_key, sign);
+        TransactionAuthenticatorEd25519Item(pubKey, sign);
 
-    SignedUserTransaction signed_txn = SignedUserTransaction(raw_txn, author);
+    SignedUserTransaction signedTxn = SignedUserTransaction(rawTxn, author);
 
     var res = await client.sendRequest('txpool.submit_hex_transaction',
-        [Helpers.byteToHex(signed_txn.bcsSerialize())]);
+        [Helpers.byteToHex(signedTxn.bcsSerialize())]);
     print('result is $res');
   });
 
@@ -248,7 +246,7 @@ void main() {
               }
             }
           }
-          print("Key : $k, value : ${value}");
+          print("Key : $k, value : $value");
         }
       }
     }
@@ -288,12 +286,12 @@ void main() {
 
     final tokenList = await account.getAccountToken(URL);
     if(tokenList.length>0){      
-      var sruct_tag=tokenList[0].token.type_params[0] as TypeTagStructItem;
+      var sructTag=tokenList[0].token.type_params[0] as TypeTagStructItem;
       final result = await account.transferToken(
         Int128(0, 20000),
         AccountAddress(reciever.keyPair.getAddressBytes()),
         Bytes(reciever.keyPair.getPublicAuthKey()),
-        sruct_tag.value
+        sructTag.value
         );        
     
       await Future.delayed(Duration(seconds: 5));

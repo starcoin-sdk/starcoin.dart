@@ -6,9 +6,6 @@ class Script {
   List<Uint8List> args;
 
   Script(Bytes code, List<TypeTag> ty_args, List<Uint8List> args) {
-    assert (code != null);
-    assert (ty_args != null);
-    assert (args != null);
     this.code = code;
     this.ty_args = ty_args;
     this.args = args;
@@ -28,9 +25,9 @@ class Script {
 
   static Script deserialize(BinaryDeserializer deserializer){
     var code = deserializer.deserialize_bytes();
-    var ty_args = TraitHelpers.deserialize_vector_TypeTag(deserializer);
+    var tyArgs = TraitHelpers.deserialize_vector_TypeTag(deserializer);
     var args = TraitHelpers.deserialize_vector_bytes(deserializer);
-    return new Script(code,ty_args,args);
+    return new Script(code,tyArgs,args);
   }
 
   static Script bcsDeserialize(Uint8List input)  {

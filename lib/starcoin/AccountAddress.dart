@@ -4,7 +4,6 @@ class AccountAddress {
   List<int> value;
 
   AccountAddress(List<int> value) {
-    assert (value != null);
     this.value = value;
   }
 

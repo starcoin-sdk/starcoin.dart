@@ -36,7 +36,7 @@ class StarcoinClient {
         return data.result as T;
         ////
         // ignore: avoid_catches_without_on_clauses
-      } on SocketException catch(e){ 
+      } on SocketException { 
         hostMananger.removeFailureHost();
         log("remove host ${hostMananger.getHttpBaseUrl()} from host manager"); 
         if(retryCounts<=retryHosts){

@@ -48,7 +48,6 @@ class TransactionPayloadScriptItem extends TransactionPayload {
   Script value;
 
   TransactionPayloadScriptItem(Script value) {
-    assert (value != null);
     this.value = value;
   }
 
@@ -92,7 +91,6 @@ class TransactionPayloadPackageItem extends TransactionPayload {
   Package value;
 
   TransactionPayloadPackageItem(Package value) {
-    assert (value != null);
     this.value = value;
   }
 
@@ -136,7 +134,6 @@ class TransactionPayloadScriptFunctionItem extends TransactionPayload {
   ScriptFunction value;
 
   TransactionPayloadScriptFunctionItem(ScriptFunction value) {
-    assert (value != null);
     this.value = value;
   }
 

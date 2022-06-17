@@ -4,7 +4,6 @@ class BalanceResource {
   Int128 token;
 
   BalanceResource(Int128 token) {
-    assert (token != null);
     this.token = token;
   }
 

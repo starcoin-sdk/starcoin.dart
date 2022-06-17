@@ -4,7 +4,6 @@ class MultiEd25519Signature {
   Bytes value;
 
   MultiEd25519Signature(Bytes value) {
-    assert (value != null);
     this.value = value;
   }
 

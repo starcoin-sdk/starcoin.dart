@@ -72,7 +72,7 @@ class Account {
   }
 
   String getAddress() {
-    if (_address != null && _address.isNotEmpty) {
+    if (_address.isNotEmpty) {
       return "0x" + _address;
     }
     _address = keyPair.getAddress();
@@ -86,7 +86,7 @@ class Account {
                 Helpers.hexToBytes("00000000000000000000000000000001")),
             Identifier("STC"),
             Identifier("STC"),
-            List()));
+            []));
   }
 
   Future<Int128> balanceOf(StructTag tokenType) async {
@@ -95,7 +95,7 @@ class Account {
         Identifier("Account"),
         Identifier("Balance"),
         List.from([TypeTagStructItem(tokenType)]));
-    final path = List<int>();
+    final path = <int>[];
     path.add(RESOURCE_TAG);
 
     final hash = lcsHash(structTag.bcsSerialize(), "STARCOIN::StructTag");
@@ -182,7 +182,7 @@ class Account {
   ) async {
     final accountStateSet = await getAccountStateSet();
 
-    final result = List<TokenBalance>();
+    final result = <TokenBalance>[];
     if (accountStateSet != null) {
       final resources = accountStateSet['resources'];
       for (var k in resources.keys) {
@@ -236,7 +236,7 @@ class Account {
         AccountAddress(Helpers.hexToBytes("00000000000000000000000000000001")),
         Identifier("STC"),
         Identifier("STC"),
-        List());
+        []);
 
     return await transferToken( amount, reciever, publicKey, structTag);
   }
@@ -256,14 +256,14 @@ class Account {
         AccountAddress(Helpers.hexToBytes("00000000000000000000000000000001")),
         Identifier("Account"),
         Identifier("Account"),
-        List());
+        []);
 
     final result = await this.getState(DataPathResourceItem(structTag));
 
     if (result == null) {
       return 0;
     }
-    var listInt = List<int>();
+    var listInt = <int>[];
     for (var i in result) {
       listInt.add(i);
     }
@@ -281,7 +281,7 @@ class Account {
 
   EventKey genEventKey(int salt) {
     AccountAddress self = AccountAddress(this.keyPair.getAddressBytes());
-    List<int> result = List<int>();
+    List<int> result = <int>[];
 
     var bdata = new ByteData(8);
     bdata.setUint64(0, salt, Endian.little);

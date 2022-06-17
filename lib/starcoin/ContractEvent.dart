@@ -44,7 +44,6 @@ class ContractEventV0Item extends ContractEvent {
   ContractEventV0 value;
 
   ContractEventV0Item(ContractEventV0 value) {
-    assert (value != null);
     this.value = value;
   }
 

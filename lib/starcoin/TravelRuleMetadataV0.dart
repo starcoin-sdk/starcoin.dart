@@ -4,7 +4,6 @@ class TravelRuleMetadataV0 {
   Optional<String> off_chain_reference_id;
 
   TravelRuleMetadataV0(Optional<String> off_chain_reference_id) {
-    assert (off_chain_reference_id != null);
     this.off_chain_reference_id = off_chain_reference_id;
   }
 
@@ -19,8 +18,8 @@ class TravelRuleMetadataV0 {
   }
 
   static TravelRuleMetadataV0 deserialize(BinaryDeserializer deserializer){
-    var off_chain_reference_id = TraitHelpers.deserialize_option_str(deserializer);
-    return new TravelRuleMetadataV0(off_chain_reference_id);
+    var offChainReferenceId = TraitHelpers.deserialize_option_str(deserializer);
+    return new TravelRuleMetadataV0(offChainReferenceId);
   }
 
   static TravelRuleMetadataV0 bcsDeserialize(Uint8List input)  {

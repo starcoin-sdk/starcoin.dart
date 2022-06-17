@@ -4,7 +4,6 @@ import 'package:starcoin_wallet/serde/serde.dart';
 import 'package:starcoin_wallet/starcoin/starcoin.dart';
 import 'package:starcoin_wallet/wallet/account.dart';
 import 'package:starcoin_wallet/wallet/client.dart';
-import 'package:http/http.dart';
 import 'package:starcoin_wallet/wallet/hash.dart';
 import 'package:starcoin_wallet/wallet/helper.dart';
 import 'package:starcoin_wallet/wallet/wallet_client.dart';
@@ -61,7 +60,7 @@ class Node {
                 Helpers.hexToBytes("00000000000000000000000000000001")),
             Identifier("STC"),
             Identifier("STC"),
-            List()));
+            []));
   }
 
   Future<Int128> balanceOf(AccountAddress sender, StructTag tokenType) async {
@@ -70,7 +69,7 @@ class Node {
         Identifier("Account"),
         Identifier("Balance"),
         List.from([TypeTagStructItem(tokenType)]));
-    final path = List<int>();
+    final path = <int>[];
     path.add(RESOURCE_TAG);
 
     final hash = lcsHash(structTag.bcsSerialize(), "STARCOIN::StructTag");

@@ -9,12 +9,6 @@ class BlockMetadata {
   int number;
 
   BlockMetadata(HashValue parent_hash, int timestamp, AccountAddress author, Bytes auth_key_prefix, int uncles, int number) {
-    assert (parent_hash != null);
-    assert (timestamp != null);
-    assert (author != null);
-    assert (auth_key_prefix != null);
-    assert (uncles != null);
-    assert (number != null);
     this.parent_hash = parent_hash;
     this.timestamp = timestamp;
     this.author = author;
@@ -39,13 +33,13 @@ class BlockMetadata {
   }
 
   static BlockMetadata deserialize(BinaryDeserializer deserializer){
-    var parent_hash = HashValue.deserialize(deserializer);
+    var parentHash = HashValue.deserialize(deserializer);
     var timestamp = deserializer.deserialize_u64();
     var author = AccountAddress.deserialize(deserializer);
-    var auth_key_prefix = deserializer.deserialize_bytes();
+    var authKeyPrefix = deserializer.deserialize_bytes();
     var uncles = deserializer.deserialize_u64();
     var number = deserializer.deserialize_u64();
-    return new BlockMetadata(parent_hash,timestamp,author,auth_key_prefix,uncles,number);
+    return new BlockMetadata(parentHash,timestamp,author,authKeyPrefix,uncles,number);
   }
 
   static BlockMetadata bcsDeserialize(Uint8List input)  {

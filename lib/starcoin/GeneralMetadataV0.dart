@@ -6,9 +6,6 @@ class GeneralMetadataV0 {
   Optional<int> referenced_event;
 
   GeneralMetadataV0(Optional<Bytes> to_subaddress, Optional<Bytes> from_subaddress, Optional<int> referenced_event) {
-    assert (to_subaddress != null);
-    assert (from_subaddress != null);
-    assert (referenced_event != null);
     this.to_subaddress = to_subaddress;
     this.from_subaddress = from_subaddress;
     this.referenced_event = referenced_event;
@@ -27,10 +24,10 @@ class GeneralMetadataV0 {
   }
 
   static GeneralMetadataV0 deserialize(BinaryDeserializer deserializer){
-    var to_subaddress = TraitHelpers.deserialize_option_bytes(deserializer);
-    var from_subaddress = TraitHelpers.deserialize_option_bytes(deserializer);
-    var referenced_event = TraitHelpers.deserialize_option_u64(deserializer);
-    return new GeneralMetadataV0(to_subaddress,from_subaddress,referenced_event);
+    var toSubaddress = TraitHelpers.deserialize_option_bytes(deserializer);
+    var fromSubaddress = TraitHelpers.deserialize_option_bytes(deserializer);
+    var referencedEvent = TraitHelpers.deserialize_option_u64(deserializer);
+    return new GeneralMetadataV0(toSubaddress,fromSubaddress,referencedEvent);
   }
 
   static GeneralMetadataV0 bcsDeserialize(Uint8List input)  {

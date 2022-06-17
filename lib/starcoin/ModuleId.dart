@@ -5,8 +5,6 @@ class ModuleId {
   Identifier name;
 
   ModuleId(AccountAddress address, Identifier name) {
-    assert (address != null);
-    assert (name != null);
     this.address = address;
     this.name = name;
   }

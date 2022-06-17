@@ -155,7 +155,7 @@ class Helpers {
   }
 
   static Uint8List publicKeyIntoAddress(Uint8List publicKey) {
-    List<int> key = new List();
+    List<int> key = [];
     key.addAll(publicKey);
     key.add(0);
 

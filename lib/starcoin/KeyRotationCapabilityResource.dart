@@ -4,7 +4,6 @@ class KeyRotationCapabilityResource {
   AccountAddress account_address;
 
   KeyRotationCapabilityResource(AccountAddress account_address) {
-    assert (account_address != null);
     this.account_address = account_address;
   }
 
@@ -19,8 +18,8 @@ class KeyRotationCapabilityResource {
   }
 
   static KeyRotationCapabilityResource deserialize(BinaryDeserializer deserializer){
-    var account_address = AccountAddress.deserialize(deserializer);
-    return new KeyRotationCapabilityResource(account_address);
+    var accountAddress = AccountAddress.deserialize(deserializer);
+    return new KeyRotationCapabilityResource(accountAddress);
   }
 
   static KeyRotationCapabilityResource bcsDeserialize(Uint8List input)  {

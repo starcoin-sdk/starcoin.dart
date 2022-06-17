@@ -3,7 +3,7 @@
 part of bcs;
 
 class BcsDeserializer extends BinaryDeserializer {
-  BcsDeserializer(Uint8List input) : super(input) {}
+  BcsDeserializer(Uint8List input) : super(input);
 
   int deserialize_uleb128_as_u32() {
     int value = 0;

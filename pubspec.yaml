@@ -3,27 +3,34 @@ description: Sdk for starcoin blockchain project.
 version: 0.1.0
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  sdk: ">=2.11.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  hex: ^0.1.2
-  convert: ^2.1.1
-  fixnum: ^0.10.9
-  bip39: ^1.0.3
+  hex: ^0.2.0
+  convert: ^3.0.0
+  fixnum: ^1.0.0
+  bip39: ^1.0.6
+  starcoin_types:
+    git:
+      url: https://github.com/starcoin-sdk/starcoin_types.dart
   bip32:
     git:
-      url: git://github.com/starcoinorg/bip32
-  ed25519_dart_base: ^0.0.1
-  sha3: 0.1.1
-  optional: '5.0.0'
-  http: 0.12.2
-  json_rpc_2: 2.2.2
-  web_socket_channel: ^1.1.0  
-  tuple: 1.0.3  
-  bech32: 0.2.0
+      url: https://github.com/dart-bitcoin/bip32-dart
+  ed25519_dart_base:
+    git:
+      url: https://github.com/starcoin-sdk/ed25519_dart
+  sha3: ^0.2.0
+  optional: ^6.1.0
+  http: 0.13.4
+  json_rpc_2: 3.0.2
+  web_socket_channel: ^2.2.0
+  tuple: ^2.0.0
+  bech32: 0.2.1
+
 
 dev_dependencies:
  flutter_test:
     sdk: flutter
+ test: ^1.21.1

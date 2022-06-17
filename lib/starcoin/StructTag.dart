@@ -7,10 +7,6 @@ class StructTag {
   List<TypeTag> type_params;
 
   StructTag(AccountAddress address, Identifier module, Identifier name, List<TypeTag> type_params) {
-    assert (address != null);
-    assert (module != null);
-    assert (name != null);
-    assert (type_params != null);
     this.address = address;
     this.module = module;
     this.name = name;
@@ -34,8 +30,8 @@ class StructTag {
     var address = AccountAddress.deserialize(deserializer);
     var module = Identifier.deserialize(deserializer);
     var name = Identifier.deserialize(deserializer);
-    var type_params = TraitHelpers.deserialize_vector_TypeTag(deserializer);
-    return new StructTag(address,module,name,type_params);
+    var typeParams = TraitHelpers.deserialize_vector_TypeTag(deserializer);
+    return new StructTag(address,module,name,typeParams);
   }
 
   static StructTag bcsDeserialize(Uint8List input)  {

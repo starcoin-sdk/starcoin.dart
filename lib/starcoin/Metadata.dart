@@ -47,8 +47,7 @@ abstract class Metadata {
 
 
 class MetadataUndefinedItem extends Metadata {
-  MetadataUndefinedItem() {
-  }
+  MetadataUndefinedItem();
 
   void serialize(BinarySerializer serializer){
     serializer.serialize_variant_index(0);
@@ -82,7 +81,6 @@ class MetadataGeneralMetadataItem extends Metadata {
   GeneralMetadata value;
 
   MetadataGeneralMetadataItem(GeneralMetadata value) {
-    assert (value != null);
     this.value = value;
   }
 
@@ -126,7 +124,6 @@ class MetadataTravelRuleMetadataItem extends Metadata {
   TravelRuleMetadata value;
 
   MetadataTravelRuleMetadataItem(TravelRuleMetadata value) {
-    assert (value != null);
     this.value = value;
   }
 
@@ -170,7 +167,6 @@ class MetadataUnstructuredBytesMetadataItem extends Metadata {
   UnstructuredBytesMetadata value;
 
   MetadataUnstructuredBytesMetadataItem(UnstructuredBytesMetadata value) {
-    assert (value != null);
     this.value = value;
   }
 

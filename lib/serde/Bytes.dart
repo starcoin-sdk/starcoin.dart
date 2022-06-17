@@ -2,16 +2,13 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 part of serde;
 
-/**
- * Immutable wrapper class around byte[].
- *
- * Enforces value-semantice for `equals` and `hashCode`.
- */
+/// Immutable wrapper class around byte[].
+///
+/// Enforces value-semantice for `equals` and `hashCode`.
 class Bytes {
   Uint8List content;
 
   Bytes(Uint8List content) {
-    assert(content != null);
     this.content = content;
   }
 

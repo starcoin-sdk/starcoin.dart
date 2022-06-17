@@ -9,7 +9,6 @@ class ScriptFunctionCallAcceptTokenItem extends ScriptFunctionCall {
   TypeTag token_type;
 
   ScriptFunctionCallAcceptTokenItem(TypeTag token_type) {
-    assert (token_type != null);
     this.token_type = token_type;
   }
 
@@ -40,8 +39,7 @@ class ScriptFunctionCallAcceptTokenItem extends ScriptFunctionCall {
 }
 
 class ScriptFunctionCallCancelUpgradePlanItem extends ScriptFunctionCall {
-  ScriptFunctionCallCancelUpgradePlanItem() {
-  }
+  ScriptFunctionCallCancelUpgradePlanItem();
 
   @override
   bool operator ==(covariant ScriptFunctionCallCancelUpgradePlanItem other) {
@@ -72,12 +70,6 @@ class ScriptFunctionCallCastVoteItem extends ScriptFunctionCall {
   Int128 votes;
 
   ScriptFunctionCallCastVoteItem(TypeTag token, TypeTag action_t, AccountAddress proposer_address, int proposal_id, bool agree, Int128 votes) {
-    assert (token != null);
-    assert (action_t != null);
-    assert (proposer_address != null);
-    assert (proposal_id != null);
-    assert (agree != null);
-    assert (votes != null);
     this.token = token;
     this.action_t = action_t;
     this.proposer_address = proposer_address;
@@ -139,10 +131,6 @@ class ScriptFunctionCallCreateAccountWithInitialAmountItem extends ScriptFunctio
   Int128 initial_amount;
 
   ScriptFunctionCallCreateAccountWithInitialAmountItem(TypeTag token_type, AccountAddress fresh_address, Bytes auth_key, Int128 initial_amount) {
-    assert (token_type != null);
-    assert (fresh_address != null);
-    assert (auth_key != null);
-    assert (initial_amount != null);
     this.token_type = token_type;
     this.fresh_address = fresh_address;
     this.auth_key = auth_key;
@@ -194,10 +182,6 @@ class ScriptFunctionCallDestroyTerminatedProposalItem extends ScriptFunctionCall
   int proposal_id;
 
   ScriptFunctionCallDestroyTerminatedProposalItem(TypeTag token_t, TypeTag action_t, AccountAddress proposer_address, int proposal_id) {
-    assert (token_t != null);
-    assert (action_t != null);
-    assert (proposer_address != null);
-    assert (proposal_id != null);
     this.token_t = token_t;
     this.action_t = action_t;
     this.proposer_address = proposer_address;
@@ -248,9 +232,6 @@ class ScriptFunctionCallExecuteItem extends ScriptFunctionCall {
   int proposal_id;
 
   ScriptFunctionCallExecuteItem(TypeTag token_t, AccountAddress proposer_address, int proposal_id) {
-    assert (token_t != null);
-    assert (proposer_address != null);
-    assert (proposal_id != null);
     this.token_t = token_t;
     this.proposer_address = proposer_address;
     this.proposal_id = proposal_id;
@@ -295,8 +276,6 @@ class ScriptFunctionCallExecuteOnChainConfigProposalItem extends ScriptFunctionC
   int proposal_id;
 
   ScriptFunctionCallExecuteOnChainConfigProposalItem(TypeTag config_t, int proposal_id) {
-    assert (config_t != null);
-    assert (proposal_id != null);
     this.config_t = config_t;
     this.proposal_id = proposal_id;
   }
@@ -375,47 +354,6 @@ class ScriptFunctionCallInitializeItem extends ScriptFunctionCall {
   int transaction_timeout;
 
   ScriptFunctionCallInitializeItem(int stdlib_version, int reward_delay, Int128 pre_mine_amount, Int128 time_mint_amount, int time_mint_period, Bytes parent_hash, Bytes association_auth_key, Bytes genesis_auth_key, int chain_id, int genesis_timestamp, int uncle_rate_target, int epoch_block_count, int base_block_time_target, int base_block_difficulty_window, Int128 base_reward_per_block, int base_reward_per_uncle_percent, int min_block_time_target, int max_block_time_target, int base_max_uncles_per_block, int base_block_gas_limit, int strategy, Bytes merged_script_allow_list, bool is_open_module, Bytes instruction_schedule, Bytes native_schedule, int global_memory_per_byte_cost, int global_memory_per_byte_write_cost, int min_transaction_gas_units, int large_transaction_cutoff, int instrinsic_gas_per_byte, int maximum_number_of_gas_units, int min_price_per_gas_unit, int max_price_per_gas_unit, int max_transaction_size_in_bytes, int gas_unit_scaling_factor, int default_account_size, int voting_delay, int voting_period, int voting_quorum_rate, int min_action_delay, int transaction_timeout) {
-    assert (stdlib_version != null);
-    assert (reward_delay != null);
-    assert (pre_mine_amount != null);
-    assert (time_mint_amount != null);
-    assert (time_mint_period != null);
-    assert (parent_hash != null);
-    assert (association_auth_key != null);
-    assert (genesis_auth_key != null);
-    assert (chain_id != null);
-    assert (genesis_timestamp != null);
-    assert (uncle_rate_target != null);
-    assert (epoch_block_count != null);
-    assert (base_block_time_target != null);
-    assert (base_block_difficulty_window != null);
-    assert (base_reward_per_block != null);
-    assert (base_reward_per_uncle_percent != null);
-    assert (min_block_time_target != null);
-    assert (max_block_time_target != null);
-    assert (base_max_uncles_per_block != null);
-    assert (base_block_gas_limit != null);
-    assert (strategy != null);
-    assert (merged_script_allow_list != null);
-    assert (is_open_module != null);
-    assert (instruction_schedule != null);
-    assert (native_schedule != null);
-    assert (global_memory_per_byte_cost != null);
-    assert (global_memory_per_byte_write_cost != null);
-    assert (min_transaction_gas_units != null);
-    assert (large_transaction_cutoff != null);
-    assert (instrinsic_gas_per_byte != null);
-    assert (maximum_number_of_gas_units != null);
-    assert (min_price_per_gas_unit != null);
-    assert (max_price_per_gas_unit != null);
-    assert (max_transaction_size_in_bytes != null);
-    assert (gas_unit_scaling_factor != null);
-    assert (default_account_size != null);
-    assert (voting_delay != null);
-    assert (voting_period != null);
-    assert (voting_quorum_rate != null);
-    assert (min_action_delay != null);
-    assert (transaction_timeout != null);
     this.stdlib_version = stdlib_version;
     this.reward_delay = reward_delay;
     this.pre_mine_amount = pre_mine_amount;
@@ -652,10 +590,6 @@ class ScriptFunctionCallMintAndSplitByLinearKeyItem extends ScriptFunctionCall {
   int lock_period;
 
   ScriptFunctionCallMintAndSplitByLinearKeyItem(TypeTag token, AccountAddress for_address, Int128 amount, int lock_period) {
-    assert (token != null);
-    assert (for_address != null);
-    assert (amount != null);
-    assert (lock_period != null);
     this.token = token;
     this.for_address = for_address;
     this.amount = amount;
@@ -704,7 +638,6 @@ class ScriptFunctionCallMintTokenByFixedKeyItem extends ScriptFunctionCall {
   TypeTag token;
 
   ScriptFunctionCallMintTokenByFixedKeyItem(TypeTag token) {
-    assert (token != null);
     this.token = token;
   }
 
@@ -738,7 +671,6 @@ class ScriptFunctionCallMintTokenByLinearKeyItem extends ScriptFunctionCall {
   TypeTag token;
 
   ScriptFunctionCallMintTokenByLinearKeyItem(TypeTag token) {
-    assert (token != null);
     this.token = token;
   }
 
@@ -775,10 +707,6 @@ class ScriptFunctionCallPeerToPeerItem extends ScriptFunctionCall {
   Int128 amount;
 
   ScriptFunctionCallPeerToPeerItem(TypeTag token_type, AccountAddress payee, Bytes payee_auth_key, Int128 amount) {
-    assert (token_type != null);
-    assert (payee != null);
-    assert (payee_auth_key != null);
-    assert (amount != null);
     this.token_type = token_type;
     this.payee = payee;
     this.payee_auth_key = payee_auth_key;
@@ -830,10 +758,6 @@ class ScriptFunctionCallPeerToPeerBatchItem extends ScriptFunctionCall {
   Int128 amount;
 
   ScriptFunctionCallPeerToPeerBatchItem(TypeTag token_type, Bytes payeees, Bytes payee_auth_keys, Int128 amount) {
-    assert (token_type != null);
-    assert (payeees != null);
-    assert (payee_auth_keys != null);
-    assert (amount != null);
     this.token_type = token_type;
     this.payeees = payeees;
     this.payee_auth_keys = payee_auth_keys;
@@ -886,11 +810,6 @@ class ScriptFunctionCallPeerToPeerWithMetadataItem extends ScriptFunctionCall {
   Bytes metadata;
 
   ScriptFunctionCallPeerToPeerWithMetadataItem(TypeTag token_type, AccountAddress payee, Bytes payee_auth_key, Int128 amount, Bytes metadata) {
-    assert (token_type != null);
-    assert (payee != null);
-    assert (payee_auth_key != null);
-    assert (amount != null);
-    assert (metadata != null);
     this.token_type = token_type;
     this.payee = payee;
     this.payee_auth_key = payee_auth_key;
@@ -949,12 +868,6 @@ class ScriptFunctionCallProposeItem extends ScriptFunctionCall {
   int exec_delay;
 
   ScriptFunctionCallProposeItem(TypeTag token_t, int voting_delay, int voting_period, int voting_quorum_rate, int min_action_delay, int exec_delay) {
-    assert (token_t != null);
-    assert (voting_delay != null);
-    assert (voting_period != null);
-    assert (voting_quorum_rate != null);
-    assert (min_action_delay != null);
-    assert (exec_delay != null);
     this.token_t = token_t;
     this.voting_delay = voting_delay;
     this.voting_period = voting_period;
@@ -1017,11 +930,6 @@ class ScriptFunctionCallProposeModuleUpgradeItem extends ScriptFunctionCall {
   int exec_delay;
 
   ScriptFunctionCallProposeModuleUpgradeItem(TypeTag token, AccountAddress module_address, Bytes package_hash, int version, int exec_delay) {
-    assert (token != null);
-    assert (module_address != null);
-    assert (package_hash != null);
-    assert (version != null);
-    assert (exec_delay != null);
     this.token = token;
     this.module_address = module_address;
     this.package_hash = package_hash;
@@ -1086,18 +994,6 @@ class ScriptFunctionCallProposeUpdateConsensusConfigItem extends ScriptFunctionC
   int exec_delay;
 
   ScriptFunctionCallProposeUpdateConsensusConfigItem(int uncle_rate_target, int base_block_time_target, Int128 base_reward_per_block, int base_reward_per_uncle_percent, int epoch_block_count, int base_block_difficulty_window, int min_block_time_target, int max_block_time_target, int base_max_uncles_per_block, int base_block_gas_limit, int strategy, int exec_delay) {
-    assert (uncle_rate_target != null);
-    assert (base_block_time_target != null);
-    assert (base_reward_per_block != null);
-    assert (base_reward_per_uncle_percent != null);
-    assert (epoch_block_count != null);
-    assert (base_block_difficulty_window != null);
-    assert (min_block_time_target != null);
-    assert (max_block_time_target != null);
-    assert (base_max_uncles_per_block != null);
-    assert (base_block_gas_limit != null);
-    assert (strategy != null);
-    assert (exec_delay != null);
     this.uncle_rate_target = uncle_rate_target;
     this.base_block_time_target = base_block_time_target;
     this.base_reward_per_block = base_reward_per_block;
@@ -1187,8 +1083,6 @@ class ScriptFunctionCallProposeUpdateRewardConfigItem extends ScriptFunctionCall
   int exec_delay;
 
   ScriptFunctionCallProposeUpdateRewardConfigItem(int reward_delay, int exec_delay) {
-    assert (reward_delay != null);
-    assert (exec_delay != null);
     this.reward_delay = reward_delay;
     this.exec_delay = exec_delay;
   }
@@ -1229,9 +1123,6 @@ class ScriptFunctionCallProposeUpdateTxnPublishOptionItem extends ScriptFunction
   int exec_delay;
 
   ScriptFunctionCallProposeUpdateTxnPublishOptionItem(Bytes script_allow_list, bool module_publishing_allowed, int exec_delay) {
-    assert (script_allow_list != null);
-    assert (module_publishing_allowed != null);
-    assert (exec_delay != null);
     this.script_allow_list = script_allow_list;
     this.module_publishing_allowed = module_publishing_allowed;
     this.exec_delay = exec_delay;
@@ -1276,8 +1167,6 @@ class ScriptFunctionCallProposeUpdateTxnTimeoutConfigItem extends ScriptFunction
   int exec_delay;
 
   ScriptFunctionCallProposeUpdateTxnTimeoutConfigItem(int duration_seconds, int exec_delay) {
-    assert (duration_seconds != null);
-    assert (exec_delay != null);
     this.duration_seconds = duration_seconds;
     this.exec_delay = exec_delay;
   }
@@ -1329,20 +1218,6 @@ class ScriptFunctionCallProposeUpdateVmConfigItem extends ScriptFunctionCall {
   int exec_delay;
 
   ScriptFunctionCallProposeUpdateVmConfigItem(Bytes instruction_schedule, Bytes native_schedule, int global_memory_per_byte_cost, int global_memory_per_byte_write_cost, int min_transaction_gas_units, int large_transaction_cutoff, int instrinsic_gas_per_byte, int maximum_number_of_gas_units, int min_price_per_gas_unit, int max_price_per_gas_unit, int max_transaction_size_in_bytes, int gas_unit_scaling_factor, int default_account_size, int exec_delay) {
-    assert (instruction_schedule != null);
-    assert (native_schedule != null);
-    assert (global_memory_per_byte_cost != null);
-    assert (global_memory_per_byte_write_cost != null);
-    assert (min_transaction_gas_units != null);
-    assert (large_transaction_cutoff != null);
-    assert (instrinsic_gas_per_byte != null);
-    assert (maximum_number_of_gas_units != null);
-    assert (min_price_per_gas_unit != null);
-    assert (max_price_per_gas_unit != null);
-    assert (max_transaction_size_in_bytes != null);
-    assert (gas_unit_scaling_factor != null);
-    assert (default_account_size != null);
-    assert (exec_delay != null);
     this.instruction_schedule = instruction_schedule;
     this.native_schedule = native_schedule;
     this.global_memory_per_byte_cost = global_memory_per_byte_cost;
@@ -1441,7 +1316,6 @@ class ScriptFunctionCallPublishItem extends ScriptFunctionCall {
   Bytes key;
 
   ScriptFunctionCallPublishItem(Bytes key) {
-    assert (key != null);
     this.key = key;
   }
 
@@ -1478,10 +1352,6 @@ class ScriptFunctionCallQueueProposalActionItem extends ScriptFunctionCall {
   int proposal_id;
 
   ScriptFunctionCallQueueProposalActionItem(TypeTag token_t, TypeTag action_t, AccountAddress proposer_address, int proposal_id) {
-    assert (token_t != null);
-    assert (action_t != null);
-    assert (proposer_address != null);
-    assert (proposal_id != null);
     this.token_t = token_t;
     this.action_t = action_t;
     this.proposer_address = proposer_address;
@@ -1533,10 +1403,6 @@ class ScriptFunctionCallRevokeVoteItem extends ScriptFunctionCall {
   int proposal_id;
 
   ScriptFunctionCallRevokeVoteItem(TypeTag token, TypeTag action, AccountAddress proposer_address, int proposal_id) {
-    assert (token != null);
-    assert (action != null);
-    assert (proposer_address != null);
-    assert (proposal_id != null);
     this.token = token;
     this.action = action;
     this.proposer_address = proposer_address;
@@ -1585,7 +1451,6 @@ class ScriptFunctionCallRotateAuthenticationKeyItem extends ScriptFunctionCall {
   Bytes new_key;
 
   ScriptFunctionCallRotateAuthenticationKeyItem(Bytes new_key) {
-    assert (new_key != null);
     this.new_key = new_key;
   }
 
@@ -1622,10 +1487,6 @@ class ScriptFunctionCallSplitFixedKeyItem extends ScriptFunctionCall {
   int lock_period;
 
   ScriptFunctionCallSplitFixedKeyItem(TypeTag token, AccountAddress for_address, Int128 amount, int lock_period) {
-    assert (token != null);
-    assert (for_address != null);
-    assert (amount != null);
-    assert (lock_period != null);
     this.token = token;
     this.for_address = for_address;
     this.amount = amount;
@@ -1676,9 +1537,6 @@ class ScriptFunctionCallSubmitModuleUpgradePlanItem extends ScriptFunctionCall {
   int proposal_id;
 
   ScriptFunctionCallSubmitModuleUpgradePlanItem(TypeTag token, AccountAddress proposer_address, int proposal_id) {
-    assert (token != null);
-    assert (proposer_address != null);
-    assert (proposal_id != null);
     this.token = token;
     this.proposer_address = proposer_address;
     this.proposal_id = proposal_id;
@@ -1723,8 +1581,6 @@ class ScriptFunctionCallTakeOfferItem extends ScriptFunctionCall {
   AccountAddress offer_address;
 
   ScriptFunctionCallTakeOfferItem(TypeTag offered, AccountAddress offer_address) {
-    assert (offered != null);
-    assert (offer_address != null);
     this.offered = offered;
     this.offer_address = offer_address;
   }
@@ -1766,10 +1622,6 @@ class ScriptFunctionCallUnstakeVoteItem extends ScriptFunctionCall {
   int proposal_id;
 
   ScriptFunctionCallUnstakeVoteItem(TypeTag token, TypeTag action, AccountAddress proposer_address, int proposal_id) {
-    assert (token != null);
-    assert (action != null);
-    assert (proposer_address != null);
-    assert (proposal_id != null);
     this.token = token;
     this.action = action;
     this.proposer_address = proposer_address;
@@ -1818,7 +1670,6 @@ class ScriptFunctionCallUpdateModuleUpgradeStrategyItem extends ScriptFunctionCa
   int strategy;
 
   ScriptFunctionCallUpdateModuleUpgradeStrategyItem(int strategy) {
-    assert (strategy != null);
     this.strategy = strategy;
   }
 

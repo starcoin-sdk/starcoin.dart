@@ -9,7 +9,7 @@ class KeyFactory {
   String path = "m/44'/101010'/0'/0'/";
 
   KeyFactory(String salt, {String mnemonic}) {
-    if (mnemonic != null && mnemonic.isNotEmpty) {
+    if (mnemonic.isNotEmpty) {
       assert(Mnemonic.validateMnemonic(mnemonic));
     } else {
       mnemonic = Mnemonic.generateMnemonic();

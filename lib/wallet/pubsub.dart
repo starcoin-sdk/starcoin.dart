@@ -10,7 +10,6 @@ import 'dart:developer';
 import 'package:optional/optional.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
-import 'package:pedantic/pedantic.dart';
 
 const _pingDuration = Duration(seconds: 2);
 
@@ -115,11 +114,11 @@ class PubSubClient {
     while(true){
       try{
         return tryConnect(filter);
-      }  on StateError catch(_e){ 
+      }  on StateError { 
         hostMananger.removeFailureHost();
         log("remove host ${hostMananger.getHttpBaseUrl()} from host manager"); 
         continue;
-      } on WebSocketChannelException catch (e) {
+      } on WebSocketChannelException {
         hostMananger.removeFailureHost();
         log("remove host ${hostMananger.getHttpBaseUrl()} from host manager"); 
         continue;
@@ -251,7 +250,7 @@ class PubSubClient {
   }
 
   Future dispose() async {
-    _ticker?.cancel();
+    _ticker.cancel();
     final remainingFilters = List.of(_filters);
 
     await Future.forEach(remainingFilters, uninstall);
@@ -262,7 +261,7 @@ class PubSubClient {
   }
 
   Future<rpc.Peer> _connectWithPeer() async{
-    if (_streamRpcPeer != null && !_streamRpcPeer.isClosed) {
+    if (!_streamRpcPeer.isClosed) {
       return _streamRpcPeer;
     }
 

@@ -16,7 +16,7 @@ class KeyFactory {
   Uint8List _masterSeedData;
 
   KeyFactory(String salt, {String mnemonic}) {
-    if (mnemonic != null && mnemonic.isNotEmpty) {
+    if (mnemonic.isNotEmpty) {
       assert(Mnemonic.validateMnemonic(mnemonic));
     } else {
       mnemonic = Mnemonic.generateMnemonic();

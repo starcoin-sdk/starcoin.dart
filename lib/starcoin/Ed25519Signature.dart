@@ -4,7 +4,6 @@ class Ed25519Signature {
   Bytes value;
 
   Ed25519Signature(Bytes value) {
-    assert (value != null);
     this.value = value;
   }
 

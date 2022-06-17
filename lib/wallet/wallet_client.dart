@@ -116,7 +116,7 @@ class WalletClient {
       return null;
     }
 
-    final listInt = List<int>();
+    final listInt = <int>[];
     for (var i in result) {
       listInt.add(i);
     }
@@ -135,7 +135,7 @@ class WalletClient {
       return null;
     }
 
-    final listInt = List<int>();
+    final listInt = <int>[];
     for (var i in result) {
       listInt.add(i);
     }
@@ -168,7 +168,7 @@ class WalletClient {
       accessPath += "/" + path.value.address.toString();
       accessPath += "::" + path.value.module.value;
       accessPath += "::" + path.value.name.value;
-      if (path.value.type_params != null && path.value.type_params.isNotEmpty) {
+      if (path.value.type_params.isNotEmpty) {
         for (TypeTag tag in path.value.type_params) {
           if (tag is TypeTagStructItem) {
             accessPath += "<" + tag.value.address.toString();
@@ -186,8 +186,7 @@ class BatchClient {
 
   HostMananger hostMananger;
 
-  BatchClient(this.hostMananger) {
-  }
+  BatchClient(this.hostMananger);
 
   ClientController getClientController(){
     return ClientController(
@@ -212,7 +211,7 @@ class BatchClient {
       try{
         var clientController = getClientController();
         return await clientController.batchCall(url, params);
-      }on WebSocketException catch(e){ 
+      }on WebSocketException { 
         hostMananger.removeFailureHost();
         log("remove host ${hostMananger.getHttpBaseUrl()} from host manager"); 
           continue;     

@@ -4,7 +4,6 @@ class Ed25519PublicKey {
   Bytes value;
 
   Ed25519PublicKey(Bytes value) {
-    assert (value != null);
     this.value = value;
   }
 

@@ -4,7 +4,6 @@ class UnstructuredBytesMetadata {
   Optional<Bytes> metadata;
 
   UnstructuredBytesMetadata(Optional<Bytes> metadata) {
-    assert (metadata != null);
     this.metadata = metadata;
   }
 

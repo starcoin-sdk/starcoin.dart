@@ -7,10 +7,6 @@ class EventFilter {
   Optional<int> limit;
 
   EventFilter(Optional<int> from_block, Optional<int> to_block, List<EventKey> event_keys, Optional<int> limit) {
-    assert (from_block != null);
-    assert (to_block != null);
-    assert (event_keys != null);
-    assert (limit != null);
     this.from_block = from_block;
     this.to_block = to_block;
     this.event_keys = event_keys;
@@ -31,11 +27,11 @@ class EventFilter {
   }
 
   static EventFilter deserialize(BinaryDeserializer deserializer){
-    var from_block = TraitHelpers.deserialize_option_u64(deserializer);
-    var to_block = TraitHelpers.deserialize_option_u64(deserializer);
-    var event_keys = TraitHelpers.deserialize_vector_EventKey(deserializer);
+    var fromBlock = TraitHelpers.deserialize_option_u64(deserializer);
+    var toBlock = TraitHelpers.deserialize_option_u64(deserializer);
+    var eventKeys = TraitHelpers.deserialize_vector_EventKey(deserializer);
     var limit = TraitHelpers.deserialize_option_u64(deserializer);
-    return new EventFilter(from_block,to_block,event_keys,limit);
+    return new EventFilter(fromBlock,toBlock,eventKeys,limit);
   }
 
   static EventFilter bcsDeserialize(Uint8List input)  {
